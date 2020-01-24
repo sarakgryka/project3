@@ -1,6 +1,7 @@
 const express = require("express");
 
 // this is from Michael
+// and this is Michael's second comment for push #2
 
 const mongoose = require("mongoose");
 const routes = require("./routes");
