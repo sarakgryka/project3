@@ -6,6 +6,7 @@ import Trips from "./pages/trips";
 import React from "react";
 import NavBar from "./components/NavBar";
 import { useAuth0 } from "./react-auth0-spa";
+import Jumbotron from "./components/Jumbotron"
 
 function App() {
   const { loading } = useAuth0();
@@ -17,7 +18,8 @@ function App() {
   return (
     <div className="App">
       <header>
-        <NavBar />
+      <NavBar />
+        <Jumbotron />
       </header>
     </div>
   );
