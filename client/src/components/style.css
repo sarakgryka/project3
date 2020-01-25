@@ -1,0 +1,67 @@
+.jumbotron {
+    color: white;
+    background-image: url("./images/homepagehero.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+    background-attachment: fixed;
+    overflow-x: hidden;
+  }
+
+  .full-width{
+      background-image: url("./images/full-width.png");
+      height: 300px;
+  }
+
+  h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 52px;
+    color: #D74F08;
+  }
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 36px;
+    color: #D74F08;
+  }
+
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 32px;
+    color: #232528;
+  }
+
+  p{
+      font-family:'Open Sans', sans-serif;
+      font-size: 16px;
+      color: #232528;
+  }
+
+  .lead{
+    font-family:'Open Sans', sans-serif;
+    font-size: 16px;
+    color: #ffffff;
+  }
+
+
+  .btn-primary{
+      background-color: #F2BA07 !important;
+      width: 200px;
+      height: 50px;
+      font-family: 'Open Sans', sans-serif;
+      color: #232528 !important;
+      text-transform: uppercase;
+      border: none !important;
+      border-radius: 0 !important;
+      margin: 0 auto;
+      padding: 0;
+      display: table-cell;
+      vertical-align: middle;
+  }

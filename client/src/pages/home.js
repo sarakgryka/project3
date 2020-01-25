@@ -33,7 +33,7 @@ class Home extends Component {
   render() {
     return (
       <div>
-          <Nav />
+          <NavBar />
           <HeroImage />
           <FirstBlock />
           <WideJumbo />

@@ -6,7 +6,11 @@ import Trips from "./pages/trips";
 import React from "react";
 import NavBar from "./components/NavBar";
 import { useAuth0 } from "./react-auth0-spa";
-import Jumbotron from "./components/Jumbotron"
+import WideJumbo from "./components/wideJumbo"
+import SecondBlock from "./components/secondBlock"
+import Footer from "./components/footer"
+import HeroImage from "./components/hero-image"
+import FirstBlock from "./components/firstBlock"
 
 function App() {
   const { loading } = useAuth0();
@@ -19,7 +23,11 @@ function App() {
     <div className="App">
       <header>
       <NavBar />
-        <Jumbotron />
+      <HeroImage />
+          <FirstBlock />
+          <WideJumbo />
+          <SecondBlock />
+          <Footer />
       </header>
     </div>
   );

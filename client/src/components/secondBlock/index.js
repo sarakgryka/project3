@@ -1,6 +1,9 @@
 import React from "react";
+import "../style.css";
+import { useAuth0 } from "../../react-auth0-spa";
 
 function SecondBlock() {
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
     return (
         <div>
 
@@ -24,7 +27,9 @@ function SecondBlock() {
                         </div>
                         <div className="col-md-1"></div>
                         <div className="col-md-4">
-                            <a href="#" className="btn btn-primary">Create Account</a>
+                        {!isAuthenticated && (
+          <button className="btn btn-primary" onClick={() => loginWithRedirect({})}>CREATE LOGIN</button>
+        )}
                         </div>
 
                     </div>
