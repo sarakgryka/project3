@@ -4,7 +4,7 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 import { Col, Row, Container } from "../components/Grid";
-import Nav from "../components/Nav";
+import NavBar from "../components/NavBar";
 import HeroImage from "../components/hero-image";
 import FirstBlock from "../components/firstBlock";
 import WideJumbo from "../components/wideJumbo";
@@ -33,6 +33,7 @@ class Home extends Component {
   render() {
     return (
       <div>
+        <h1>Home Page</h1>
           <NavBar />
           <HeroImage />
           <FirstBlock />
