@@ -37,10 +37,7 @@ class Trips extends Component {
       <div>
         <h1>Trips Page</h1>
           <NavBar />
-          <HeroImage />
-          <FirstBlock />
-          <WideJumbo />
-          <SecondBlock />
+          
           <Footer />
       </div>
     );
