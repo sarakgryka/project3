@@ -10,18 +10,15 @@ import Footer from "../components/footer";
 
 
 
-function myAccount() {
+function MyAccount() {
   return (
     <div>
       <h1>My Account Page</h1>
       <NavBar />
-      <HeroImage />
-      <FirstBlock />
-      <WideJumbo />
-      <SecondBlock />
+      
       <Footer />
     </div>
   );
 }
 
-export default myAccount;
+export default MyAccount;

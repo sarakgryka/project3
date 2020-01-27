@@ -1,16 +1,9 @@
-
-import Trips from "./pages/trips";
-
-// src/App.js
-
 import React from "react";
-import NavBar from "./components/NavBar";
 import { useAuth0 } from "./react-auth0-spa";
-import WideJumbo from "./components/wideJumbo"
-import SecondBlock from "./components/secondBlock"
-import Footer from "./components/footer"
-import HeroImage from "./components/hero-image"
-import FirstBlock from "./components/firstBlock"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/home";
+import MyAccount from "./pages/myAccount";
+import Trips from "./pages/trips";
 
 function App() {
   const { loading } = useAuth0();
@@ -20,16 +13,15 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <header>
-      <NavBar />
-      <HeroImage />
-          <FirstBlock />
-          <WideJumbo />
-          <SecondBlock />
-          <Footer />
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/myAccount" component={MyAccount} />
+          <Route exact path="/trips" component={Trips} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

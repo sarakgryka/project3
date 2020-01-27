@@ -3,6 +3,7 @@
 import React from "react";
 import { useAuth0 } from "../react-auth0-spa";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
@@ -17,12 +18,20 @@ const NavBar = () => {
       </button>
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="nav">
-          <li className="nav-item">
-            <a className="nav-link active" href="#">Plan Your Trip</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">Account</a>
-          </li>
+
+          <Link to="/trips">
+            <li className="nav-item">
+              Plan Your Trip
+            {/* <a className="nav-link active" href="#">Plan Your Trip</a> */}
+            </li>
+          </Link>
+
+          <Link to="/myAccount">
+            <li className="nav-item">
+              Account
+            {/* <a className="nav-link" href="#">Account</a> */}
+            </li>
+          </Link>
         </ul>
       </div>
 
