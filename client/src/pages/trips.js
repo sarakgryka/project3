@@ -1,33 +1,33 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
-import Jumbotron from "../components/Jumbotron";
+
 import API from "../utils/API";
 
 import { Col, Row, Container } from "../components/Grid";
 
 import NavBar from "../components/NavBar";
-import HeroImage from "../components/hero-image";
-import FirstBlock from "../components/firstBlock";
-import WideJumbo from "../components/wideJumbo";
-import SecondBlock from "../components/secondBlock";
+import JumboTrip from "../components/Jumbotron-Trip"
+import FormTrip from "../components/FormTrip"
+
 import Footer from "../components/footer";
+
 
 
 class Trips extends Component {
   state = {
- 
+
   };
 
   componentDidMount() {
-   
+
   }
 
   loadTrips = () => {
-  
+
   };
 
   deleteTrip = id => {
-   
+
   };
 
 
@@ -35,13 +35,28 @@ class Trips extends Component {
   render() {
     return (
       <div>
-      
+
           <NavBar />
-          
+          <JumboTrip />
+          <FormTrip />
           <Footer />
       </div>
     );
   }
 }
+
+// function Trips() {
+//   return (
+//     <div>
+
+//       <NavBar />
+//       <JumboTrip />
+//       <FormTrip />
+//       <Footer />
+
+
+//     </div>
+//   );
+// }
 
 export default Trips;
