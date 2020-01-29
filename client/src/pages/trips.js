@@ -35,7 +35,7 @@ class Trips extends Component {
   render() {
     return (
       <div>
-        <h1>Trips Page</h1>
+      
           <NavBar />
           
           <Footer />

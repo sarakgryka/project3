@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import MyAccount from "./pages/myAccount";
 import Trips from "./pages/trips";
 
+
 function App() {
   const { loading } = useAuth0();
 
