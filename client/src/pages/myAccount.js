@@ -7,6 +7,7 @@ import FirstBlock from "../components/firstBlock";
 import WideJumbo from "../components/wideJumbo";
 import SecondBlock from "../components/secondBlock";
 import Footer from "../components/footer";
+import { useAuth0 } from "../react-auth0-spa";
 
 
 

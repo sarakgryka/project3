@@ -1,20 +1,26 @@
 import axios from "axios";
 
 export default {
-  // Gets all books
-  getTrips: function() {
+  //get trip from googlemaps//
+  getAllTrips: function () {
+    return axios.get("");
+  },
+
+  // Saves a trip to the database
+  saveTrip: function (tripInfo) {
+    return axios.post("/api/trips", tripInfo);
+  },
+  // Gets all saved trips//
+  getTrips: function () {
     return axios.get("/api/trips");
   },
-  // Gets the book with the given id
-  getTrip: function(id) {
+  // Gets the trip with the given id
+  getTrip: function (id) {
     return axios.get("/api/trips/" + id);
   },
-  // Deletes the book with the given id
-  deleteTrip: function(id) {
+  // Deletes the trip with the given id
+  deleteTrip: function (id) {
     return axios.delete("/api/trips/" + id);
-  },
-  // Saves a book to the database
-  saveTrip: function(tripData) {
-    return axios.post("/api/trips", tripData);
   }
+
 };
