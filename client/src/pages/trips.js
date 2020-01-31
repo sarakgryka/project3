@@ -6,6 +6,8 @@ import NavBar from "../components/NavBar";
 import JumboTrip from "../components/Jumbotron-Trip"
 import FormTrip from "../components/FormTrip"
 import Footer from "../components/footer";
+import TripSearchResults from "../components/tripSearchResults"
+
 import { useAuth0 } from "../react-auth0-spa";
 
 
@@ -72,6 +74,8 @@ class Trips extends Component {
 
 
         />
+        <br></br>
+        <TripSearchResults />
         <Footer />
 
 
