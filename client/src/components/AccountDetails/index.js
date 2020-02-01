@@ -17,7 +17,7 @@ function AccountDetails() {
                     </div>
 
                     <div className="col-md-6">
-                        {/* <img src="images/profilepicture.png" alt="profile" id="profilepic"> </img> */}
+                        <img src={ require ("../images/profilepicture.png")} alt="profile" id="profilepic"/>
 
                     </div>
                 </div>

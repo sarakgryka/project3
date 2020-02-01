@@ -7,8 +7,11 @@ function WideJumbo() {
 
             <div className="full-width jumbotron jumbotron-fluid">
                 <div className="container text-center">
+                    
                     <h2>ABOUT TRIPPIN'</h2>
-                    <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+                    <div class="container col-sm-4 text-center">
+                    <p className="lead">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
                 </div>
             </div>
             <br></br>

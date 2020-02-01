@@ -5,10 +5,12 @@ function FormTrip(props) {
 
     return (
 
+        <div class="container">
+
         <form class="col-sm-12">
             <h3>Search Here</h3>
             <div class="form-row">
-                <div class="col-sm-5">
+                <div class="col">
                     <input
                         onChange={props.handleInput}
                         type="text"
@@ -22,7 +24,7 @@ function FormTrip(props) {
                     />
 
                 </div>
-                <div class="col-sm-5">
+                <div class="col">
                     <input
                         onChange={props.handleInput}
                         type="text"
@@ -34,13 +36,15 @@ function FormTrip(props) {
 
                     />
                 </div>
-
-                <button onClick={props.handleFormSubmit} type="button" class="btn btn-warning hvr-sweep-to-right" id="searchButton">Search<i class="fas fa-search"></i></button>
+        <div class="col">
+                <button onClick={props.handleFormSubmit} type="button" class="btn btn-primary hvr-sweep-to-right" id="searchButton">Search<i class="fas fa-search"></i></button>
+                </div>
             </div>
 
 
 
         </form >
+        </div>
     );
 }
 

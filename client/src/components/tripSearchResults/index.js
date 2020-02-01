@@ -4,7 +4,7 @@ import "../style.css";
 function TripSearchResults() {
     return (
 
-        <div>
+        <div class="container">
             <div className="row">
                 <div className="col-sm-12">
 

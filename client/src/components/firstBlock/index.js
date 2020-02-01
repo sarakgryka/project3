@@ -22,7 +22,8 @@ function FirstBlock() {
                             </div>
                             <div className="col-md-1"></div>
                             <div className="col-md-4">
-                                <img src="./images/planyourtrip-thumbnail.png" class="content-image"></img>
+                                <img src={ require ("../images/planyourtrip-thumbnail.png")} class="content-image"/>
+                                
                             </div>
 
                         </div>
