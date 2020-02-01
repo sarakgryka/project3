@@ -4,13 +4,16 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
-        <div className="footer text-center">
+        <div className="container footer text-center">
 
             <footer className="navbar navbar-expand-lg navbar-dark footer">
 
+                <Link to="/#">
+
                 <a className="navbar-brand" href="#">
-                    <img src="./images/TRIPPIN2@2x.png" height="60" alt="" id="footer-logo"></img>
+                    <img src={ require('../images/trippin2x.png') } height="60" alt="" id="logo" />
                 </a>
+                </Link>
 
                 <ul className="nav mx-auto">
 

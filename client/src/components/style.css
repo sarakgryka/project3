@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Oswald:600&display=swap');
+
+
 .jumbotron {
     color: white;
     background-image: url("./images/homepagehero.png");
@@ -9,9 +12,42 @@
     overflow-x: hidden;
   }
 
+  #plantriphero {
+    background-image: url("./images/plantriphero.png");
+}
+
   .full-width{
       background-image: url("./images/full-width.png");
-      height: 300px;
+      height: 330px;
+  }
+
+  /* #plantriphero{
+    background-image: url("./images/plantriphero.png");
+  } */
+
+    .nav-item{
+      margin-right: 15px;
+    }
+
+    .create-account-btn{
+      margin-top: 50px !important;
+    }
+
+  .map{
+    height:450px;
+    width: 1200px;
+    background-color: #f6f6f6;
+  }
+
+  #profilepic{
+    height: 250px;
+    width: 250px;
+    background-color: #f6f6f6;
+  }
+
+  .savedTrip{
+    height: 250px;
+    width: 1200px;
   }
 
   h1 {
@@ -65,3 +101,60 @@
       display: table-cell;
       vertical-align: middle;
   }
+
+
+  .form-control:focus {
+    border-color: #F2BA07;
+    box-shadow: 0 0 0 1px #F2BA07;
+    background-color: #fefefe;
+} 
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.fa-search{
+   
+    margin-left: 10px;
+}
+
+.map{
+  height: 450px;
+  width: 1200px;
+  background-color: #f6f6f6;
+
+}
+
+#profilepic{
+  height: 250px;
+  width: 250px;
+  background-color: #f6f6f6;
+}
+
+.savedTrip{
+  height: 250px;
+  width: 1200px;
+  background-color: #f6f6f6;
+  
+}
+
+.card{
+  border: none !important;
+}
+
+.navbar{
+  border: none !important;
+}
+
+#navlogin{
+  width: 120px;
+}

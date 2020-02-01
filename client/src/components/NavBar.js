@@ -9,10 +9,14 @@ const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
+    <div class="container">
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <Link to="/#">
       <a className="navbar-brand" href="#">
-        <img src="./images/TRIPPIN2@2x.png" height="60" alt="" id="logo"></img>
+
+        <img src={ require('./images/trippin2x.png') } height="60" alt="" id="logo" />
       </a>
+      </Link>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -26,6 +30,8 @@ const NavBar = () => {
             </li>
           </Link>
 
+          
+
           <Link to="/myAccount">
             <li className="nav-item">
               Account
@@ -37,12 +43,13 @@ const NavBar = () => {
 
       <div>
         {!isAuthenticated && (
-          <button className="btn btn-primary" onClick={() => loginWithRedirect({})}>Log in</button>
+          <button className="btn btn-primary" id="navlogin" onClick={() => loginWithRedirect({})}>Log in</button>
         )}
 
         {isAuthenticated && <button className="btn btn-primary" onClick={() => logout()}>Log out</button>}
       </div>
     </nav>
+    </div>
   );
 };
 
