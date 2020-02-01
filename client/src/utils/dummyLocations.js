@@ -6,8 +6,8 @@ const directions = [
   //   from: locationsList.Mumbai,
   //   to: locationsList.Pune,
   //   strokeColor: "#f68f54"
-  // },
-  // {
+  // }
+  // // {
   //   from: locationsList.Goa,
   //   to: locationsList.Ratnagiri,
   //   strokeColor: "#f68f54"
