@@ -7,7 +7,7 @@ import JumboTrip from "../components/Jumbotron-Trip"
 import FormTrip from "../components/FormTrip"
 import Footer from "../components/footer";
 import TripSearchResults from "../components/tripSearchResults"
-
+import Directions from "../components/Directions/DirectionsIndex"
 import { useAuth0 } from "../react-auth0-spa";
 
 
@@ -75,6 +75,7 @@ class Trips extends Component {
 
         />
         <br></br>
+      <Directions/>
         <TripSearchResults />
         <Footer />
 
