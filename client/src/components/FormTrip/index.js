@@ -5,7 +5,7 @@ function FormTrip(props) {
 
     return (
 
-        <div class="container">
+        <div class="container tripFormStyle">
 
         <form class="col-sm-12">
             <h3>Search Here</h3>

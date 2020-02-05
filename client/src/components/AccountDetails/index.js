@@ -4,7 +4,7 @@ import "../style.css";
 function AccountDetails() {
     return (
         <div>
-            <div className="container">
+            <div className="container account-Details">
                 <div className="row">
                     <div className="col-md-6">
                         <h1>Your Account</h1>
@@ -17,17 +17,20 @@ function AccountDetails() {
                     </div>
 
                     <div className="col-md-6">
-                        <img src={ require ("../images/profilepicture.png")} alt="profile" id="profilepic"/>
+                        <img src={require("../images/profilepicture.png")} alt="profile" id="profilepic" />
 
                     </div>
                 </div>
 
-                <h2>Your Saved Trips</h2>
+                <div class="saved-Trips">
+                    <h2>Your Saved Trips</h2>
 
-                {/* <h5 className="savedTripTitle">Saved Trip One</h5>
+                    {/* <h5 className="savedTripTitle">Saved Trip One</h5>
             <div className="col-md-12 savedTrip">
                 <img src="images/savedtripone.png"></img>
             </div> */}
+
+                </div>
 
 
 
