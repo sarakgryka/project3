@@ -7,7 +7,7 @@ function SecondBlock() {
     return (
         <div>
 
-            <div className="container">
+            <div className="container secondBlock">
                 <div className="card">
                     <div className="row ">
 

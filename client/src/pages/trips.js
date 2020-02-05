@@ -79,6 +79,7 @@ console.log(endCoords)
     this.searchTrip(this.state.start, this.state.end)
 
   }
+  
 
   render() {
 
