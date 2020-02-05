@@ -8,15 +8,17 @@ import Trips from "./pages/trips";
 
 
 function App() {
-  const { loading } = useAuth0();
-
+  const { loading, user} = useAuth0();
+ console.log(user)
   if (loading) {
     return <div>Loading...</div>;
+    
   }
 
 
 
   return (
+    
     <Router>
       <div className="App">
         <Switch>
