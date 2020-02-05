@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 function Footer() {
     return (
+
+        <div class="footerStyle">
         <div className="container footer text-center">
 
             <footer className="navbar navbar-expand-lg navbar-dark footer">
@@ -11,28 +13,28 @@ function Footer() {
                 <Link to="/#">
 
                 <a className="navbar-brand" href="#">
-                    <img src={ require('../images/trippin2x.png') } height="60" alt="" id="logo" />
+                    <img src={ require('../images/trippin2x-white.png') } height="60" alt="" id="logo" />
                 </a>
                 </Link>
 
-                <ul className="nav mx-auto">
+                <ul className="nav mx-auto" id="footerLinks">
 
 
                     <Link to="/">
-                        <li className="nav-item">
+                        <li className="nav-item footerLinks">
                             Home
                         {/* <a className="nav-link footer-link" href="#">Home</a> */}
                         </li>
                     </Link>
 
                     <Link to="/trips">
-                        <li className="nav-item">
+                        <li className="nav-item footerLinks">
                             Plan Your Trip
                         {/* <a className="nav-link footer-link" href="#">Plan Your Trip</a> */}
                         </li>
                     </Link>
                     <Link to="/myAccount">
-                        <li className="nav-item">
+                        <li className="nav-item footerLinks">
                             Account
                         {/* <a className="nav-link footer-link" href="#">Account</a> */}
                         </li>
@@ -40,6 +42,7 @@ function Footer() {
                 </ul>
 
             </footer>
+            </div>
 
         </div>
     );
