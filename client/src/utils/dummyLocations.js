@@ -1,7 +1,7 @@
-import { locationsList } from "./constants";
-import { createLocationObject } from "./helper";
+// import { locationsList } from "./constants";
+// import { createLocationObject } from "./helper";
 
-const directions = [
+// const directions = [
   // {
   //   from: locationsList.Mumbai,
   //   to: locationsList.Pune,
@@ -52,18 +52,18 @@ const directions = [
   //   to: locationsList.Bikaner,
   //   strokeColor: "#f68f54"
   // }
-];
-const DummyLocations = directions.map(elem => {
-  return createLocationObject(
-    elem.from.latLng,
-    elem.from.title,
-    elem.to.latLng,
-    elem.to.title,
-    elem.strokeColor
-  );
-});
+// ];
+// const DummyLocations = directions.map(elem => {
+//   return createLocationObject(
+//     elem.from.latLng,
+//     elem.from.title,
+//     elem.to.latLng,
+//     elem.to.title,
+//     elem.strokeColor
+//   );
+// });
 
-export default DummyLocations;
+// export default DummyLocations;
 
 /* more directions
 const moreDirections = [

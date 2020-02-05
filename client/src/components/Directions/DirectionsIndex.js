@@ -20,7 +20,7 @@ class Directions extends Component {
         center={this.state.center}
         defaultCenter={new window.google.maps.LatLng(30.266666, -97.733330)}
       >
-        {DummyLocations.map((elem, index) => {
+        {/* {DummyLocations.map((elem, index) => {
           return (
             <DirectionRenderComponentAsync
               key={index}
@@ -30,7 +30,7 @@ class Directions extends Component {
               to={elem.to}
             />
           );
-        })}
+        })} */}
       </GoogleMap>
     );
   }
