@@ -29,10 +29,22 @@ class Trips extends Component {
 
   };
 
+  saveTrip = tripInfo => {
+
+    // Can't call this because it is using hooks, unable to use inside of class //
+    // const { user} = useAuth0();
+
+    // console.log(user)
+    return {
+
+
+    }
+  }
+
   loadMap = (startCoords, endCoords) => {
 console.log(startCoords)
 console.log(endCoords)
-
+this.saveTrip()
 
   }
   //define query params//
@@ -50,6 +62,7 @@ console.log(endCoords)
         })
         console.log(res.data.routes[0].legs[0].start_location);
         console.log(res.data.routes[0].legs[0].end_location)
+        console.log(res.data.routes[0].legs[0].steps)
         this.loadMap(this.state.startCoords, this.state.endCoords)
 
       }
