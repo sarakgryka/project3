@@ -9,7 +9,7 @@ const NavBar = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   return (
-    <div class="container">
+    <div className="container">
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <Link to="/#">
       <a className="navbar-brand" href="#">

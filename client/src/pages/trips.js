@@ -14,8 +14,8 @@ import { useAuth0 } from "../react-auth0-spa";
 
 class Trips extends Component {
   state = {
-    value: ""
-
+    value: "",
+    steps: []
   };
 
   componentDidMount() {
@@ -29,10 +29,10 @@ class Trips extends Component {
 
   };
 
-  loadMap = (startCoords, endCoords) => {
+  loadMap = (startCoords, endCoords, steps) => {
 console.log(startCoords)
 console.log(endCoords)
-
+console.log(steps);
 
   }
   //define query params//
@@ -42,15 +42,19 @@ console.log(endCoords)
 
     API.getLatLong(start, end)
       .then(res => {
+        let htmlDirections = res.data.routes[0].legs[0].steps
 
         this.setState({
           startCoords: res.data.routes[0].legs[0].start_location,
-          endCoords: res.data.routes[0].legs[0].end_location
-
+          endCoords: res.data.routes[0].legs[0].end_location,
+          steps: htmlDirections
         })
-        console.log(res.data.routes[0].legs[0].start_location);
-        console.log(res.data.routes[0].legs[0].end_location)
-        this.loadMap(this.state.startCoords, this.state.endCoords)
+        console.log("start_location: ",res.data.routes[0].legs[0].start_location);
+        console.log("end_location: ",res.data.routes[0].legs[0].end_location);
+        console.log(res.data);
+        
+        console.log(htmlDirections);
+        this.loadMap(this.state.startCoords, this.state.endCoords, this.state.steps)
 
       }
 
@@ -63,10 +67,7 @@ console.log(endCoords)
     const value = event.target.value;
 
     this.setState({
-
       [name]: value
-
-
     })
   }
 
@@ -97,6 +98,17 @@ console.log(endCoords)
         />
         <br></br>
         <Directions />
+        <div>
+          {this.state.steps.map(step => (
+            <ul key={step.html_instructions}>
+              <li>
+              {step.html_instructions.replace(/<\/?[^>]+(>|$)/g, "")}
+
+              </li>
+            </ul>
+
+          ))}
+        </div>
 
         <TripSearchResults />
 
