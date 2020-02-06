@@ -1,7 +1,7 @@
 import React from "react";
 import "../style.css";
 
-function TripSearchResults() {
+function TripSearchResults(props) {
     return (
 
 
@@ -13,12 +13,11 @@ function TripSearchResults() {
                     <h3>Directions:</h3>
 
                     <div className="directionResults">
-                        <ul>
-                            <li>Direction one</li>
-                            <li>Direction two</li>
-                            <li>Direction three</li>
-                            <li>Direction four</li>
-                        </ul>
+                        {props.steps.map(step => (
+                            <ul key={step.html_instructions}>
+                                <li>{step.html_instructions.replace(/<\/?[^>]+(>|$)/g, "")}</li>
+                            </ul>
+                        ))}
                     </div>
 
 
@@ -35,12 +34,11 @@ function TripSearchResults() {
                     <h3>Places to Stay:</h3>
 
                     <div className="stayResults">
-                        <ul>
-                            <li>Place to stay one</li>
-                            <li>Place to stay two</li>
-                            <li>Place to stay three</li>
-                            <li>Place to stay four</li>
-                        </ul>
+                    {props.lodging.map(hotel => (
+                            <ul key={hotel}>
+                                <li>{hotel}</li>
+                            </ul>
+                        ))}
                     </div>
 
                     <br></br>
@@ -48,12 +46,11 @@ function TripSearchResults() {
                     <h3>Places to Eat:</h3>
 
                     <div className="eatResults">
-                        <ul>
-                            <li>Place to eat one</li>
-                            <li>Place to eat two</li>
-                            <li>Place to eat three</li>
-                            <li>Place to eat four</li>
-                        </ul>
+                    {props.restaurants.map(restaurant => (
+                            <ul key={restaurant}>
+                                <li>{restaurant}</li>
+                            </ul>
+                        ))}
                     </div>
 
 
@@ -62,7 +59,17 @@ function TripSearchResults() {
 
                 <div className="col-sm">
 
-                    <h3>Things to see along the way:</h3>
+                    <h3>Things to see at your destination:</h3>
+
+                    <div className="landmarkResults">
+                    {props.placesOfInterest.map(place => (
+                            <ul key={place}>
+                                <li>{place}</li>
+                            </ul>
+                        ))}
+                    </div>
+
+                    {/* <h3>Things to see along the way:</h3>
 
                     <div className="landmarkResults">
                         <ul>
@@ -71,7 +78,7 @@ function TripSearchResults() {
                             <li>Landmark three</li>
                             <li>Landmark four</li>
                         </ul>
-                    </div>
+                    </div> */}
 
 
                 </div>
