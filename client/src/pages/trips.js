@@ -15,7 +15,12 @@ import { useAuth0 } from "../react-auth0-spa";
 class Trips extends Component {
   state = {
     value: "",
-    steps: []
+    steps: [],
+    startCoords: {},
+    endCoords: {},
+    placesOfInterest: [],
+    lodging: [],
+    restaurants: []
   };
 
   componentDidMount() {
@@ -57,13 +62,47 @@ this.saveTrip()
 
     API.getLatLong(start, end)
       .then(res => {
-        let htmlDirections = res.data.routes[0].legs[0].steps
-
+        let htmlDirections = res.data.routes[0].legs[0].steps;
+        let startCoords = res.data.routes[0].legs[0].start_location;
+        let endCoords = res.data.routes[0].legs[0].end_location;
+        let endLat = res.data.routes[0].legs[0].end_location.lat;
+        let endLon = res.data.routes[0].legs[0].end_location.lng;
         this.setState({
           startCoords: res.data.routes[0].legs[0].start_location,
           endCoords: res.data.routes[0].legs[0].end_location,
           steps: htmlDirections
-        })
+        });
+        API.places(endLat, endLon)
+        .then(
+          placesRes => {
+            console.log(placesRes);
+
+            this.setState({
+              placesOfInterest: placesRes.data.results
+                .filter(result => result.types.indexOf("lodging") === -1)
+                .map(result => result.name),
+              lodging: placesRes.data.results
+                .filter(result => result.types.indexOf("lodging") > -1)
+                .map(result => result.name)
+            });
+            API.restaurants(endLat, endLon)
+            .then(
+              foodRes => {
+                console.log(foodRes);
+                console.log("restaurants: ", foodRes.data.results
+                  .filter(result => result.types.indexOf("lodging") === -1)
+                  .map(restaurant => restaurant.name));
+
+                  this.setState({
+                    restaurants: foodRes.data.results
+                      .filter(result => result.types.indexOf("lodging") === -1)
+                      .map(restaurant => restaurant.name)
+                  })
+              }
+            );
+          }
+        );
+
 
         console.log("start_location: ",res.data.routes[0].legs[0].start_location);
         console.log("end_location: ",res.data.routes[0].legs[0].end_location);
@@ -116,19 +155,12 @@ this.saveTrip()
         />
         <br></br>
         <Directions />
-        <div>
-          {this.state.steps.map(step => (
-            <ul key={step.html_instructions}>
-              <li>
-              {step.html_instructions.replace(/<\/?[^>]+(>|$)/g, "")}
 
-              </li>
-            </ul>
-
-          ))}
-        </div>
-
-        <TripSearchResults />
+        <TripSearchResults 
+          steps={this.state.steps}
+          placesOfInterest={this.state.placesOfInterest}
+          lodging={this.state.lodging} 
+          restaurants={this.state.restaurants} />
 
         <Footer />
 
