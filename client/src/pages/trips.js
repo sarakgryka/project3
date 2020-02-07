@@ -51,9 +51,7 @@ class Trips extends Component {
 console.log(startCoords)
 console.log(endCoords)
 console.log(steps);
-this.saveTrip()
-
-
+this.saveTrip();
   }
   //define query params//
   searchTrip = (start, end) => {
@@ -102,8 +100,6 @@ this.saveTrip()
             );
           }
         );
-
-
         console.log("start_location: ",res.data.routes[0].legs[0].start_location);
         console.log("end_location: ",res.data.routes[0].legs[0].end_location);
         console.log(res.data);
@@ -154,7 +150,8 @@ this.saveTrip()
 
         />
         <br></br>
-        <Directions />
+        <Directions endCoords={this.state.endCoords}
+          startCoords={this.state.startCoords} />
 
         <TripSearchResults 
           steps={this.state.steps}

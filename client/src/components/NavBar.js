@@ -26,16 +26,12 @@ const NavBar = () => {
         {isAuthenticated && <><Link to="/trips">
             <li className="nav-item">
               Plan Your Trip
-            {/* <a className="nav-link active" href="#">Plan Your Trip</a> */}
             </li>
           </Link>
-
-          
 
           <Link to="/myAccount">
             <li className="nav-item">
               Account
-            {/* <a className="nav-link" href="#">Account</a> */}
             </li>
           </Link></>}
 
