@@ -24,7 +24,10 @@ class Directions extends Component {
         note: because this is a class component, props can be accessed
         anywhere on this page simply by this.props */}
         <Marker
-      position={{ lat: -34.397, lng: 150.644 }}
+      position={ {lat: this.props.endCoords.lat, lng: this.props.endCoords.lng }}
+    />
+      <Marker
+      position={{lat: this.props.startCoords.lat, lng: this.props.startCoords.lng }}
     />
         {/* {DummyLocations.map((elem, index) => {
           return (
