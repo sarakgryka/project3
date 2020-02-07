@@ -17,13 +17,13 @@ export default {
     return axios.get(`${solveCorsError}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${endLat},${endLon}&radius=30000&type=restaurant&key=${mapsKey}`);
   },
 
-  getAllTrips: function () {
-    return axios.get();
+  getAllTrips: function (user) {
+    return axios.post('/api/trips/alltrips/', {user});
   },
 
   // Saves a trip to the database
-  saveTrip: function (tripData) {
-    return axios.post("/api/trips", tripData);
+  saveTrip: function (data) {
+    return axios.post("/api/trips", data);
   },
   // Gets all saved trips//
   getTrips: function () {

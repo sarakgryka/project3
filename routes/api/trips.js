@@ -2,12 +2,11 @@ const router = require("express").Router();
 const tripsController = require("../../controllers/tripsController");
 
 
-router.route("/trips")
- 
+router.route("/")
   .post(tripsController.create);
 
-router.route("/alltrips")
-.get(tripsController.findAll)
+router.route("/alltrips/:user")
+.post(tripsController.findAll)
 router
   .route("/:id")
   .get(tripsController.findById)

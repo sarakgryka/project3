@@ -1,10 +1,16 @@
 
 import "../style.css";
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
+import API from '../../utils/API';
 
 function AccountDetails() {
     const { loading, user } = useAuth0();
+    useEffect(() => {
+        API.getAllTrips(user.name).then((trips)=>{
+            console.log(trips)
+        })
+    }, [])
 
     if (loading || !user) {
         return <div>Loading...</div>;
