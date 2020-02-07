@@ -23,7 +23,7 @@ const NavBar = () => {
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="nav">
 
-          <Link to="/trips">
+        {isAuthenticated && <><Link to="/trips">
             <li className="nav-item">
               Plan Your Trip
             {/* <a className="nav-link active" href="#">Plan Your Trip</a> */}
@@ -37,7 +37,24 @@ const NavBar = () => {
               Account
             {/* <a className="nav-link" href="#">Account</a> */}
             </li>
+          </Link></>}
+
+
+          {/* <Link to="/trips">
+            <li className="nav-item">
+              Plan Your Trip
+            <a className="nav-link active" href="#">Plan Your Trip</a>
+            </li>
           </Link>
+
+          
+
+          <Link to="/myAccount">
+            <li className="nav-item">
+              Account
+            <a className="nav-link" href="#">Account</a>
+            </li>
+          </Link> */}
         </ul>
       </div>
 

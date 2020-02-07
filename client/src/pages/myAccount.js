@@ -8,7 +8,6 @@ import AccountDetails from "../components/AccountDetails"
 function MyAccount() {
   return (
     <div>
-
       <NavBar />
       <AccountDetails />
       <Footer />

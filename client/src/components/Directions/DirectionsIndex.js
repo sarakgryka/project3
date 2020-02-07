@@ -3,7 +3,7 @@ import { compose, withProps } from "recompose";
 import DirectionRenderComponentAsync from "./DirectionsRenderComponent";
 import { G_API_URL } from "../../utils/constants";
 import DummyLocations from "../../utils/dummyLocations";
-const { withScriptjs, withGoogleMap, GoogleMap } = require("react-google-maps");
+const { withScriptjs, withGoogleMap, GoogleMap, Marker } = require("react-google-maps");
 class Directions extends Component {
   state = {
     defaultZoom: 4,
@@ -20,6 +20,12 @@ class Directions extends Component {
         center={this.state.center}
         defaultCenter={new window.google.maps.LatLng(30.266666, -97.733330)}
       >
+        {/* make sure to pass down lat and lon from parent component. 
+        note: because this is a class component, props can be accessed
+        anywhere on this page simply by this.props */}
+        <Marker
+      position={{ lat: -34.397, lng: 150.644 }}
+    />
         {/* {DummyLocations.map((elem, index) => {
           return (
             <DirectionRenderComponentAsync
