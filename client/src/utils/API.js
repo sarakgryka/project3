@@ -22,8 +22,8 @@ export default {
   },
 
   // Saves a trip to the database
-  saveTrip: function (tripInfo) {
-    return axios.post("/api/trips", tripInfo);
+  saveTrip: function (tripData) {
+    return axios.post("/api/trips", tripData);
   },
   // Gets all saved trips//
   getTrips: function () {
