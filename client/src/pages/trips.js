@@ -24,7 +24,7 @@ class Trips extends Component {
 
   componentDidMount() {
     this.searchTrip();
-   
+
   }
   ///define what the API call is returning
   loadTrips = tripInfo => {
@@ -35,25 +35,21 @@ class Trips extends Component {
   };
 
 
-  saveTrip() {
+  saveTrip = data => {
 
- API.saveTrip({
+    API.saveTrip(data)
 
-  start:this.state.start,
-  end:this.state.end
- })
-  
   }
 
   loadMap = (startCoords, endCoords, steps) => {
-console.log(startCoords)
-console.log(endCoords)
-console.log(steps);
-this.saveTrip();
+    console.log(startCoords)
+    console.log(endCoords)
+    console.log(steps);
+   
   }
   //define query params//
   searchTrip = (start, end) => {
-  
+
 
     API.getLatLong(start, end)
       .then(res => {
@@ -68,39 +64,39 @@ this.saveTrip();
           steps: htmlDirections
         });
         API.places(endLat, endLon)
-        .then(
-          placesRes => {
-            console.log(placesRes);
+          .then(
+            placesRes => {
+              console.log(placesRes);
 
-            this.setState({
-              placesOfInterest: placesRes.data.results
-                .filter(result => result.types.indexOf("lodging") === -1)
-                .map(result => result.name),
-              lodging: placesRes.data.results
-                .filter(result => result.types.indexOf("lodging") > -1)
-                .map(result => result.name)
-            });
-            API.restaurants(endLat, endLon)
-            .then(
-              foodRes => {
-                console.log(foodRes);
-                console.log("restaurants: ", foodRes.data.results
+              this.setState({
+                placesOfInterest: placesRes.data.results
                   .filter(result => result.types.indexOf("lodging") === -1)
-                  .map(restaurant => restaurant.name));
-
-                  this.setState({
-                    restaurants: foodRes.data.results
+                  .map(result => result.name),
+                lodging: placesRes.data.results
+                  .filter(result => result.types.indexOf("lodging") > -1)
+                  .map(result => result.name)
+              });
+              API.restaurants(endLat, endLon)
+                .then(
+                  foodRes => {
+                    console.log(foodRes);
+                    console.log("restaurants: ", foodRes.data.results
                       .filter(result => result.types.indexOf("lodging") === -1)
-                      .map(restaurant => restaurant.name)
-                  })
-              }
-            );
-          }
-        );
-        console.log("start_location: ",res.data.routes[0].legs[0].start_location);
-        console.log("end_location: ",res.data.routes[0].legs[0].end_location);
+                      .map(restaurant => restaurant.name));
+
+                    this.setState({
+                      restaurants: foodRes.data.results
+                        .filter(result => result.types.indexOf("lodging") === -1)
+                        .map(restaurant => restaurant.name)
+                    })
+                  }
+                );
+            }
+          );
+        console.log("start_location: ", res.data.routes[0].legs[0].start_location);
+        console.log("end_location: ", res.data.routes[0].legs[0].end_location);
         console.log(res.data);
-        
+
         console.log(htmlDirections);
         this.loadMap(this.state.startCoords, this.state.endCoords, this.state.steps)
 
@@ -120,24 +116,34 @@ this.saveTrip();
     })
   }
 
-  handleFormSubmit = event => {
+  handleFormSubmit = user => {
 
-    event.preventDefault();
+    console.log(user)
     console.log("clicked")
     console.log(this.state.start)
     console.log(this.state.end)
-    this.searchTrip(this.state.start, this.state.end)
+    console.log(this.state.endCoords)
+    console.log(this.state.startCoords)
+    let data = {
+      start: this.state.start,
+      end: this.state.end,
+      startCoords: JSON.stringify(this.state.startCoords) ,
+      endCoords: JSON.stringify(this.state.endCoords),
+      user: user
+    }
 
+    this.searchTrip(this.state.start, this.state.end)
+this.saveTrip(data)
   }
-  
+
 
   render() {
 
 
-   
+
 
     return (
-   
+
       <div>
 
         <NavBar />
@@ -147,7 +153,7 @@ this.saveTrip();
           end={this.state.end}
           handleInput={this.handleInput}
           handleFormSubmit={this.handleFormSubmit}
-          // user={this.state.user}
+        // user={this.state.user}
 
 
         />
@@ -155,10 +161,10 @@ this.saveTrip();
         <Directions endCoords={this.state.endCoords}
           startCoords={this.state.startCoords} />
 
-        <TripSearchResults 
+        <TripSearchResults
           steps={this.state.steps}
           placesOfInterest={this.state.placesOfInterest}
-          lodging={this.state.lodging} 
+          lodging={this.state.lodging}
           restaurants={this.state.restaurants} />
 
         <Footer />
