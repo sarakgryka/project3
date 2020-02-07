@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import API from "../utils/API";
-import { Col, Row, Container } from "../components/Grid";
 import NavBar from "../components/NavBar";
 import JumboTrip from "../components/Jumbotron-Trip"
 import FormTrip from "../components/FormTrip"
 import Footer from "../components/footer";
 import Directions from "../components/Directions/DirectionsIndex"
 import TripSearchResults from "../components/tripSearchResults/index"
-import { useAuth0 } from "../react-auth0-spa";
+import AccountDetails from "../components/AccountDetails"
 
 
 
@@ -25,6 +24,7 @@ class Trips extends Component {
 
   componentDidMount() {
     this.searchTrip();
+   
   }
   ///define what the API call is returning
   loadTrips = tripInfo => {
@@ -35,16 +35,14 @@ class Trips extends Component {
   };
 
 
-  saveTrip = tripInfo => {
+  saveTrip() {
 
-    // Can't call this because it is using hooks, unable to use inside of class //
-    // const { user} = useAuth0();
+ API.saveTrip({
 
-    // console.log(user)
-    return {
-
-
-    }
+  start:this.state.start,
+  end:this.state.end
+ })
+  
   }
 
   loadMap = (startCoords, endCoords, steps) => {
@@ -57,8 +55,7 @@ this.saveTrip()
   }
   //define query params//
   searchTrip = (start, end) => {
-    console.log(start)
-    console.log(end)
+  
 
     API.getLatLong(start, end)
       .then(res => {
@@ -140,7 +137,11 @@ this.saveTrip()
 
   render() {
 
+
+   
+
     return (
+   
       <div>
 
         <NavBar />
@@ -150,6 +151,7 @@ this.saveTrip()
           end={this.state.end}
           handleInput={this.handleInput}
           handleFormSubmit={this.handleFormSubmit}
+          // user={this.state.user}
 
 
         />

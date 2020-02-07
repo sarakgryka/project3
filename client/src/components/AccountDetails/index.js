@@ -1,19 +1,31 @@
-import React from "react";
+
 import "../style.css";
+import React, { Fragment } from "react";
+import { useAuth0 } from "../../react-auth0-spa";
 
 function AccountDetails() {
+    const { loading, user } = useAuth0();
+
+    if (loading || !user) {
+        return <div>Loading...</div>;
+    }
+
+
+    console.log(user);
     return (
         <div>
             <div className="container account-Details">
                 <div className="row">
                     <div className="col-md-6">
-                        <h1>Your Account</h1>
-                        <h5>Name:</h5>
-                        <p>John Doe</p>
-                        <h5>Email:</h5>
-                        <p>johndoe@gmail.com</p>
-                        <h5>Password:</h5>
-                        <p>••••••••</p>
+                        <Fragment>
+                            <h1>Your Account</h1>
+
+                            <h5>Name:</h5>
+                            <p>{user.name}</p>
+                            <h5>Email:</h5>
+                            <p>{user.email}</p>
+
+                        </Fragment>
                     </div>
 
                     <div className="col-md-6">

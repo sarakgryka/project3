@@ -5,6 +5,8 @@ import Home from "./pages/home";
 import MyAccount from "./pages/myAccount";
 import Trips from "./pages/trips";
 
+import history from "./utils/history";
+
 
 
 function App() {
@@ -17,12 +19,13 @@ function App() {
 
   return (
     
-    <Router>
+    <Router history = {history}>
       <div className="App">
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/myAccount" component={MyAccount} />
           <Route exact path="/trips" component={Trips} />
+          <Route exact path="/alltrips" />
         </Switch>
       </div>
     </Router>
