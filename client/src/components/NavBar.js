@@ -17,9 +17,7 @@ const NavBar = () => {
         <img src={ require('./images/trippin2x.png') } height="60" alt="" id="logo" />
       </a>
       </Link>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
-      </button>
+
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul className="nav">
 
