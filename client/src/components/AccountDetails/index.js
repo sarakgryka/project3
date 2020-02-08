@@ -7,6 +7,7 @@ import API from '../../utils/API';
 function AccountDetails() {
     const { loading, user } = useAuth0();
     useEffect(() => {
+        console.log("useEffect() is running");
         API.getAllTrips(user.name).then((trips)=>{
             console.log(trips)
         })

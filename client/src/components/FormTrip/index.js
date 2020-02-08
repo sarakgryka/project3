@@ -26,8 +26,6 @@ function FormTrip(props) {
                             placeholder="Starting point..."
                             id="start"
                             name="start"
-
-
                         />
 
                     </div>
