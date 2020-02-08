@@ -42,7 +42,12 @@ they're interested in, it should give them a list of data fot that trip.
 what data should that consist of? Hotels nearby, step by step directions 
 places of interest, restaurants? 
 
+On account page, both name and email are your email. This needs to be fixed
 
+bootstrap: use less rows on the trips.js page so that bootstrap can fill in 
+the empty space with another list
+
+Protect footer routes
 
 
 pseudocode-------------------------------
