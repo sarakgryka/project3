@@ -12,6 +12,8 @@ function MyAccount() {
       <NavBar />
   
       <AccountDetails />
+
+      
       <Footer />
     </div>
   );

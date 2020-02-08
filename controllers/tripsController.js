@@ -2,11 +2,12 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
+    console.log(req.params.user)
     db.Trip
-      .find({where: {user: req.params.user}})
-      .sort({ date: -1 })
+      .find({user: req.params.user})
       .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+      .catch(err => res.status(422).json(err))
+     
   },
   findById: function(req, res) {
     db.Trip

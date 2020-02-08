@@ -18,7 +18,8 @@ export default {
   },
 
   getAllTrips: function (user) {
-    return axios.post('/api/trips/alltrips/', {user});
+    console.log(user)
+    return axios.get('/api/trips/alltrips/' + user.nickname);
   },
 
   // Saves a trip to the database
