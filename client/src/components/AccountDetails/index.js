@@ -1,15 +1,19 @@
 
 import "../style.css";
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import API from '../../utils/API';
 
 function AccountDetails() {
     const { loading, user } = useAuth0();
+    const [trips, setTrips] = useState([]);
     useEffect(() => {
         console.log("useEffect() is running");
-        API.getAllTrips(user.name).then((trips)=>{
+        API.getAllTrips(user).then((res) => {
+            console.log(user)
+            console.log(res)
             console.log(trips)
+            setTrips(res)
         })
     }, [])
 
@@ -44,17 +48,30 @@ function AccountDetails() {
                 <div class="saved-Trips">
                     <h2>Your Saved Trips</h2>
 
-                    {/* <h5 className="savedTripTitle">Saved Trip One</h5>
+
+                    {console.log(trips.data)}
+
+                    {/* <div className="col-md-12 savedTrip">
+                        {trips.data.map(trip => (
+                            <div key={trip._id}>
+                                <h5>Trip Start Location: {trip.start}</h5>
+                                <h5>Trip End Location: {trip.end}</h5>
+                            </div>
+                        ))}
+
+                    </div> */}
+
+                </div>
+                {/* <h5 className="savedTripTitle">Saved Trip One</h5>
             <div className="col-md-12 savedTrip">
                 <img src="images/savedtripone.png"></img>
             </div> */}
 
-                </div>
 
 
 
             </div>
-        </div>
+        </div >
     );
 }
 
