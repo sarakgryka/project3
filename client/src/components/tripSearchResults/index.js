@@ -29,7 +29,7 @@ function TripSearchResults(props) {
 
 
             <div className="row">
-                <div className="col-sm">
+                <div className="col-sm-4">
 
                     <h3>Places to Stay:</h3>
 
@@ -40,8 +40,11 @@ function TripSearchResults(props) {
                             </ul>
                         ))}
                     </div>
+                    </div>
 
                     <br></br>
+
+                    <div className="col-sm-4">
 
                     <h3>Places to Eat:</h3>
 
@@ -57,7 +60,7 @@ function TripSearchResults(props) {
                 </div>
 
 
-                <div className="col-sm">
+                <div className="col-sm-4">
 
                     <h3>Things to see at your destination:</h3>
 
