@@ -26,3 +26,24 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/trippin");
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+
+/*
+
+Tasks we still need to finish:
+
+We need to have 3 new components: 
+1) list component that displays a list of trips and 
+2) trip component that displays the data of a given trip 
+3) On the "trips" page, we need a button component to save a trip
+Thoughts behind it: once a user is signed in, we need to give them access to 
+a list of trips that they have saved. And when the user clicks on a trip 
+they're interested in, it should give them a list of data fot that trip.
+what data should that consist of? Hotels nearby, step by step directions 
+places of interest, restaurants? 
+
+
+
+
+pseudocode-------------------------------
+*/
