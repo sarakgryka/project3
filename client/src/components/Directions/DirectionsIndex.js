@@ -3,7 +3,9 @@ import { compose, withProps } from "recompose";
 import DirectionRenderComponentAsync from "./DirectionsRenderComponent";
 import { G_API_URL } from "../../utils/constants";
 import DummyLocations from "../../utils/dummyLocations";
-const { withScriptjs, withGoogleMap, GoogleMap, Marker } = require("react-google-maps");
+// const styles = require('../../../../client/GoogleMapStyles.json');
+const { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer } = require("react-google-maps");
+
 class Directions extends Component {
   state = {
     defaultZoom: 4,
@@ -11,39 +13,231 @@ class Directions extends Component {
     center: {
       lat: 30.266666,
       lng: -97.733330
-    }
+    },
+    directions: null
   };
+  componentDidMount() {
+    // this.searchTrip();
+    console.log(this.props);
+    const directionsService = new window.google.maps.DirectionsService();
+
+    const origin = { lat: this.props.startCoords.lat, lng: this.props.endCoords.lng };
+    console.log("origin", origin);
+    const destination = { lat: this.props.endCoords.lat, lng: this.props.endCoords.lng };
+    console.log("destination", destination);
+
+    directionsService.route(
+      {
+        origin: origin,
+        destination: destination,
+        travelMode: window.google.maps.TravelMode.DRIVING
+      },
+      (result, status) => {
+        if (status === window.google.maps.DirectionsStatus.OK) {
+          this.setState({
+            directions: result
+          });
+        } else {
+          console.error(`error fetching directions ${result}`);
+        }
+      });
+  }
+
+
+
   render() {
+    const { props, state } = this,
+      { googleMapsApi, mapStyles, ...otherProps } = props;
+    const GoogleMapExample = withGoogleMap
+
+
+
     return (
       <GoogleMap
         defaultZoom={this.state.defaultZoom}
         center={this.state.center}
         defaultCenter={new window.google.maps.LatLng(30.266666, -97.733330)}
+        styles={mapStyles}
       >
         {/* make sure to pass down lat and lon from parent component. 
         note: because this is a class component, props can be accessed
         anywhere on this page simply by this.props */}
         <Marker
-      position={ {lat: this.props.endCoords.lat, lng: this.props.endCoords.lng }}
-    />
-      <Marker
-      position={{lat: this.props.startCoords.lat, lng: this.props.startCoords.lng }}
-    />
-        {/* {DummyLocations.map((elem, index) => {
-          return (
-            <DirectionRenderComponentAsync
-              key={index}
-              index={index + 1}
-              strokeColor={elem.strokeColor}
-              from={elem.from}
-              to={elem.to}
-            />
-          );
-        })} */}
+          position={{ lat: -34.397, lng: 150.644 }}
+        />
+
+        <DirectionsRenderer directions={this.state.directions} />
+
       </GoogleMap>
     );
   }
 }
+// }
+
+
+// StyledMap.defaultProps = {
+//   mapStyles: [
+//     {
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#F5F5F5"
+//         }
+//       ]
+//     },
+//     {
+//       "elementType": "labels.icon",
+//       "stylers": [
+//         {
+//           "visibility": "off"
+//         }
+//       ]
+//     },
+//     {
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#616161"
+//         }
+//       ]
+//     },
+//     {
+//       "elementType": "labels.text.stroke",
+//       "stylers": [
+//         {
+//           "color": "#F5F5F5"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "administrative.land_parcel",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#BDBDBD"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "poi",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#EEEEEE"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "poi",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#757575"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "poi.park",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#E5E5E5"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "poi.park",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#9E9E9E"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "road",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#FFFFFF"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "road.arterial",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#757575"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "road.highway",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#DADADA"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "road.highway",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#616161"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "road.local",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#9E9E9E"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "transit.line",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#E5E5E5"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "transit.station",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#EEEEEE"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "water",
+//       "elementType": "geometry",
+//       "stylers": [
+//         {
+//           "color": "#C9C9C9"
+//         }
+//       ]
+//     },
+//     {
+//       "featureType": "water",
+//       "elementType": "labels.text.fill",
+//       "stylers": [
+//         {
+//           "color": "#9E9E9E"
+//         }
+//       ]
+//     }
+//   ]
+// }
+
 
 export default compose(
   withProps({
@@ -53,5 +247,6 @@ export default compose(
     mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
-  withGoogleMap
+  withGoogleMap,
+  // StyledMap
 )(Directions);
