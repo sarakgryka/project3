@@ -52,7 +52,7 @@ function FormTrip(props) {
 
                    </div> */}
                     <div className="col">
-                        <button onClick={()=> props.handleFormSubmit(user.name)} type="button" class="btn btn-primary hvr-sweep-to-right" id="searchButton">Search<i class="fas fa-search"></i></button>
+                        <button onClick={()=> props.handleFormSubmit(user.nickname)} type="button" class="btn btn-primary hvr-sweep-to-right" id="searchButton">Search<i class="fas fa-search"></i></button>
                     </div>
                 </div>
 

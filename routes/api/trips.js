@@ -6,7 +6,7 @@ router.route("/")
   .post(tripsController.create);
 
 router.route("/alltrips/:user")
-.post(tripsController.findAll)
+  .get(tripsController.findAll)
 router
   .route("/:id")
   .get(tripsController.findById)
