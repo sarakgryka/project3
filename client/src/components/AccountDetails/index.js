@@ -1,4 +1,3 @@
-
 import "../style.css";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
@@ -49,17 +48,17 @@ function AccountDetails() {
                     <h2>Your Saved Trips</h2>
 
 
-                    {console.log(trips.data)}
+                    {console.log("trips.data: ", trips.data)}
 
-                    {/* <div className="col-md-12 savedTrip">
-                        {trips.data.map(trip => (
+                    <div className="col-md-12 savedTrip">
+                        {/* {trips.data.map(trip => (
                             <div key={trip._id}>
                                 <h5>Trip Start Location: {trip.start}</h5>
                                 <h5>Trip End Location: {trip.end}</h5>
                             </div>
-                        ))}
+                        ))} */}
 
-                    </div> */}
+                    </div>
 
                 </div>
                 {/* <h5 className="savedTripTitle">Saved Trip One</h5>
