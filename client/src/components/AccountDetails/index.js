@@ -51,6 +51,15 @@ function AccountDetails() {
                     {console.log("trips.data: ", trips.data)}
 
                     <div className="col-md-12 savedTrip">
+
+                        {trips.data
+                            ? trips.data.map(trip => (
+                                <div key={trip._id}>
+                                    <h5>Trip Start Location: {trip.start}</h5>
+                                    <h5>Trip End Location: {trip.end}</h5>
+                                </div>
+                            ))
+                            : null}
                         {/* {trips.data.map(trip => (
                             <div key={trip._id}>
                                 <h5>Trip Start Location: {trip.start}</h5>
