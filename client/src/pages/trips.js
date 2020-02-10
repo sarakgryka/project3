@@ -32,18 +32,14 @@ class Trips extends Component {
     }
   };
 
-
   saveTrip = data => {
-
-    API.saveTrip(data)
-
+    API.saveTrip(data);
   }
 
   loadMap = (startCoords, endCoords, steps) => {
     console.log(startCoords)
     console.log(endCoords)
     console.log(steps);
-
   }
   //define query params//
   searchTrip = (start, end) => {
@@ -93,13 +89,9 @@ class Trips extends Component {
         console.log("start_location: ", res.data.routes[0].legs[0].start_location);
         console.log("end_location: ", res.data.routes[0].legs[0].end_location);
         console.log(res.data);
-
         console.log(htmlDirections);
         this.loadMap(this.props.state.startCoords, this.props.state.endCoords, this.props.state.steps)
-
-
       }
-
       )
       .catch(err => console.log(err))
   }
@@ -112,7 +104,7 @@ class Trips extends Component {
       this.props.setState({
         [name]: value
       })
-    }
+    } 
   }
 
   handleFormSubmit = user => {
@@ -130,17 +122,12 @@ class Trips extends Component {
       endCoords: JSON.stringify(this.props.state.endCoords),
       user: user
     }
-
     this.searchTrip(this.props.state.start, this.props.state.end)
     this.saveTrip(data)
   }
 
 
   render() {
-
-
-
-
     return (
 
       <div>
@@ -148,8 +135,8 @@ class Trips extends Component {
         <NavBar />
         <JumboTrip />
         <FormTrip
-          start={this.props.state.start}
-          end={this.props.state.end}
+          startLocation={this.props.state.start}
+          endLocation={this.props.state.end}
           handleInput={this.handleInput}
           handleFormSubmit={this.handleFormSubmit}
         // user={this.state.user}

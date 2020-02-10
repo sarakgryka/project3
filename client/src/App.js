@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import MyAccount from "./pages/myAccount";
 import Trips from "./pages/trips";
 import history from "./utils/history";
+import API from './utils/API';
 
 
 // higher order component
@@ -40,25 +41,47 @@ function withAuth0(WrappedComponent) {
 class App extends Component {
   state = {
     value: "",
+    start: "",
+    end: "",
     steps: [],
     startCoords: {},
     endCoords: {},
     placesOfInterest: [],
     lodging: [],
-    restaurants: []
+    restaurants: [],
+    trips: []
   };
+
+  deleteTrip = id => {
+    API.deleteTrip(id)
+    .then((data) => {
+      console.log(data);
+      API.getAllTrips(this.props.user)
+      .then((res) => {
+        console.log("API getAllTrips Res: ",res.data);
+        this.setState({
+          trips: res.data
+        })
+      })
+    })
+  }
+
+  handleDelete = id => {
+    this.deleteTrip(id)
+  }
+
   render() {
     if (this.props.loading) {
       return <div>Loading...</div>;
-
     }
+
 
     return (
       <Router history={history}>
         <div className="App">
           <Switch>
             <Route exact path="/" render={() => <Home state={this.state} />} />
-            <Route exact path="/myAccount" render={() => <MyAccount setState={this.setState.bind(this)} state={this.state} />} />
+            <Route exact path="/myAccount" render={() => <MyAccount handleDelete={this.handleDelete} setState={this.setState.bind(this)} state={this.state} user={this.props.user} />} />
             <Route exact path="/trips" render={() => <Trips setState={this.setState.bind(this)} state={this.state} />} />
             <Route exact path="/alltrips" />
           </Switch>
