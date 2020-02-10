@@ -5,33 +5,31 @@ import NavBar from "../components/NavBar";
 import JumboTrip from "../components/Jumbotron-Trip"
 import FormTrip from "../components/FormTrip"
 import Footer from "../components/footer";
-import Directions from "../components/Directions/DirectionsIndex"
-import TripSearchResults from "../components/tripSearchResults/index"
-import AccountDetails from "../components/AccountDetails"
+import Directions from "../components/Directions/DirectionsIndex";
+import TripSearchResults from "../components/tripSearchResults/index";
+import AccountDetails from "../components/AccountDetails";
 
 
 
 class Trips extends Component {
-  state = {
-    value: "",
-    steps: [],
-    startCoords: {},
-    endCoords: {},
-    placesOfInterest: [],
-    lodging: [],
-    restaurants: []
-  };
+  // state = {
+  //   value: "",
+  //   steps: [],
+  //   startCoords: {},
+  //   endCoords: {},
+  //   placesOfInterest: [],
+  //   lodging: [],
+  //   restaurants: []
+  // };
 
   componentDidMount() {
     this.searchTrip();
-
   }
   ///define what the API call is returning
   loadTrips = tripInfo => {
     return {
 
     }
-
   };
 
 
@@ -45,11 +43,10 @@ class Trips extends Component {
     console.log(startCoords)
     console.log(endCoords)
     console.log(steps);
-   
+
   }
   //define query params//
   searchTrip = (start, end) => {
-
 
     API.getLatLong(start, end)
       .then(res => {
@@ -58,7 +55,7 @@ class Trips extends Component {
         let endCoords = res.data.routes[0].legs[0].end_location;
         let endLat = res.data.routes[0].legs[0].end_location.lat;
         let endLon = res.data.routes[0].legs[0].end_location.lng;
-        this.setState({
+        this.props.setState({
           startCoords: res.data.routes[0].legs[0].start_location,
           endCoords: res.data.routes[0].legs[0].end_location,
           steps: htmlDirections
@@ -68,7 +65,7 @@ class Trips extends Component {
             placesRes => {
               console.log(placesRes);
 
-              this.setState({
+              this.props.setState({
                 placesOfInterest: placesRes.data.results
                   .filter(result => result.types.indexOf("lodging") === -1)
                   .map(result => result.name),
@@ -84,7 +81,7 @@ class Trips extends Component {
                       .filter(result => result.types.indexOf("lodging") === -1)
                       .map(restaurant => restaurant.name));
 
-                    this.setState({
+                    this.props.setState({
                       restaurants: foodRes.data.results
                         .filter(result => result.types.indexOf("lodging") === -1)
                         .map(restaurant => restaurant.name)
@@ -98,7 +95,7 @@ class Trips extends Component {
         console.log(res.data);
 
         console.log(htmlDirections);
-        this.loadMap(this.state.startCoords, this.state.endCoords, this.state.steps)
+        this.loadMap(this.props.state.startCoords, this.props.state.endCoords, this.props.state.steps)
 
 
       }
@@ -111,29 +108,31 @@ class Trips extends Component {
     const name = event.target.name;
     const value = event.target.value;
 
-    this.setState({
-      [name]: value
-    })
+    if (this.props.setState) {
+      this.props.setState({
+        [name]: value
+      })
+    }
   }
 
   handleFormSubmit = user => {
 
     console.log(user)
     console.log("clicked")
-    console.log(this.state.start)
-    console.log(this.state.end)
-    console.log(this.state.endCoords)
-    console.log(this.state.startCoords)
+    console.log(this.props.state.start)
+    console.log(this.props.state.end)
+    console.log(this.props.state.endCoords)
+    console.log(this.props.state.startCoords)
     let data = {
-      start: this.state.start,
-      end: this.state.end,
-      startCoords: JSON.stringify(this.state.startCoords) ,
-      endCoords: JSON.stringify(this.state.endCoords),
+      start: this.props.state.start,
+      end: this.props.state.end,
+      startCoords: JSON.stringify(this.props.state.startCoords),
+      endCoords: JSON.stringify(this.props.state.endCoords),
       user: user
     }
 
-    this.searchTrip(this.state.start, this.state.end)
-this.saveTrip(data)
+    this.searchTrip(this.props.state.start, this.props.state.end)
+    this.saveTrip(data)
   }
 
 
@@ -149,24 +148,22 @@ this.saveTrip(data)
         <NavBar />
         <JumboTrip />
         <FormTrip
-          start={this.state.start}
-          end={this.state.end}
+          start={this.props.state.start}
+          end={this.props.state.end}
           handleInput={this.handleInput}
           handleFormSubmit={this.handleFormSubmit}
         // user={this.state.user}
 
-
         />
         <br></br>
-        <Directions endCoords={this.state.endCoords}
-          startCoords={this.state.startCoords} />
+        <Directions endCoords={this.props.state.endCoords}
+          startCoords={this.props.state.startCoords} />
 
         <TripSearchResults
-          steps={this.state.steps}
-          placesOfInterest={this.state.placesOfInterest}
-          lodging={this.state.lodging}
-          restaurants={this.state.restaurants} />
-
+          steps={this.props.state.steps}
+          placesOfInterest={this.props.state.placesOfInterest}
+          lodging={this.props.state.lodging}
+          restaurants={this.props.state.restaurants} />
         <Footer />
 
 
