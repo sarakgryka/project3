@@ -2,6 +2,7 @@ import "../style.css";
 import React, { Fragment, useEffect, useState } from "react";
 import { useAuth0 } from "../../react-auth0-spa";
 import API from '../../utils/API';
+import DeleteBtn from '../DeleteBtn';
 
 function AccountDetails() {
     const { loading, user } = useAuth0();
@@ -30,8 +31,8 @@ function AccountDetails() {
                         <Fragment>
                             <h1>Your Account</h1>
 
-                            <h5>Name:</h5>
-                            <p>{user.name}</p>
+                            <h5>Username:</h5>
+                            <p>{user.nickname}</p>
                             <h5>Email:</h5>
                             <p>{user.email}</p>
 
@@ -57,15 +58,10 @@ function AccountDetails() {
                                 <div key={trip._id}>
                                     <h5>Trip Start Location: {trip.start}</h5>
                                     <h5>Trip End Location: {trip.end}</h5>
+                                    <DeleteBtn _id={trip._id} />
                                 </div>
                             ))
                             : null}
-                        {/* {trips.data.map(trip => (
-                            <div key={trip._id}>
-                                <h5>Trip Start Location: {trip.start}</h5>
-                                <h5>Trip End Location: {trip.end}</h5>
-                            </div>
-                        ))} */}
 
                     </div>
 
