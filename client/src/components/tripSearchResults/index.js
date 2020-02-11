@@ -6,7 +6,7 @@ function TripSearchResults(props) {
     const { user } = useAuth0();
     return (
         <div>
-            {props.steps ?
+            {props.steps.length ?
 
                 <div className="container listSearchResults">
                     <div className="row">

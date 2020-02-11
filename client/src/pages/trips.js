@@ -97,7 +97,9 @@ class Trips extends Component {
         });
         API.places(endLat, endLon).then(placesRes => {
           console.log(placesRes);
+          console.log("POI without filter", placesRes.data.results.map(result => result.name));
 
+          console.log("POI", placesRes.data.results.filter(result => result.types.indexOf('lodging') === -1).map(result => result.name))
           this.setState({
             placesOfInterest: placesRes.data.results.filter(result => result.types.indexOf('lodging') === -1).map(result => result.name),
             lodging: placesRes.data.results.filter(result => result.types.indexOf('lodging') > -1).map(result => result.name)
@@ -119,6 +121,11 @@ class Trips extends Component {
         console.log(res.data);
         console.log(htmlDirections);
         this.loadMap(this.state.startCoords, this.state.endCoords, this.state.steps);
+      }).then(() => {
+        this.setState({
+          start: "",
+          end: ""
+        })
       })
       .catch(err => console.log(err));
   };
