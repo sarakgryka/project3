@@ -19,8 +19,6 @@ function TripSearchResults(props) {
                             </ul>
                         ))}
                     </div>
-
-
                 </div>
 
             </div>

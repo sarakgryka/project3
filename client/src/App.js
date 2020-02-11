@@ -5,6 +5,7 @@ import Home from "./pages/home";
 import MyAccount from "./pages/myAccount";
 import Trips from "./pages/trips";
 import history from "./utils/history";
+import API from './utils/API';
 
 
 // higher order component
@@ -32,7 +33,8 @@ function withAuth0(WrappedComponent) {
     //   sub: "auth0|5e2a630654617b0e7cb9cfe7"
     // }
     // let loading = false;
-    console.log(user);
+    
+    console.log(user, Date.now());
     return <WrappedComponent loading={loading} user={user} {...props} />;
   }
 }
@@ -40,25 +42,37 @@ function withAuth0(WrappedComponent) {
 class App extends Component {
   state = {
     value: "",
+    start: "",
+    end: "",
     steps: [],
     startCoords: {},
     endCoords: {},
     placesOfInterest: [],
     lodging: [],
-    restaurants: []
+    restaurants: [],
+    trips: [],
+    defaultZoom: 4,
+    map: null,
+    center: {
+      lat: 30.266666,
+      lng: -97.733330
+    },
+    directions: null
   };
+
+
   render() {
     if (this.props.loading) {
       return <div>Loading...</div>;
-
     }
+
 
     return (
       <Router history={history}>
         <div className="App">
           <Switch>
             <Route exact path="/" render={() => <Home state={this.state} />} />
-            <Route exact path="/myAccount" render={() => <MyAccount setState={this.setState.bind(this)} state={this.state} />} />
+            <Route exact path="/myAccount" render={() => <MyAccount handleDelete={this.handleDelete} setState={this.setState.bind(this)} state={this.state} user={this.props.user} />} />
             <Route exact path="/trips" render={() => <Trips setState={this.setState.bind(this)} state={this.state} />} />
             <Route exact path="/alltrips" />
           </Switch>
