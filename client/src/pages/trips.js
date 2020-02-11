@@ -48,12 +48,16 @@ class Trips extends Component {
       .then(res => {
         let htmlDirections = res.data.routes[0].legs[0].steps;
         let startCoords = res.data.routes[0].legs[0].start_location;
+        console.log("startCoords from trips.js: ", startCoords)
         let endCoords = res.data.routes[0].legs[0].end_location;
+        console.log("endCoords from trips.js: ", endCoords);
         let endLat = res.data.routes[0].legs[0].end_location.lat;
         let endLon = res.data.routes[0].legs[0].end_location.lng;
         this.props.setState({
-          startCoords: res.data.routes[0].legs[0].start_location,
-          endCoords: res.data.routes[0].legs[0].end_location,
+          // startCoords: res.data.routes[0].legs[0].start_location,
+          // endCoords: res.data.routes[0].legs[0].end_location,
+          startCoords: startCoords,
+          endCoords: endCoords,
           steps: htmlDirections
         });
         API.places(endLat, endLon)
@@ -86,8 +90,8 @@ class Trips extends Component {
                 );
             }
           );
-        console.log("start_location: ", res.data.routes[0].legs[0].start_location);
-        console.log("end_location: ", res.data.routes[0].legs[0].end_location);
+        console.log("start_location from trips.js: ", res.data.routes[0].legs[0].start_location);
+        console.log("end_location from trips.js: ", res.data.routes[0].legs[0].end_location);
         console.log(res.data);
         console.log(htmlDirections);
         this.loadMap(this.props.state.startCoords, this.props.state.endCoords, this.props.state.steps)
@@ -104,10 +108,11 @@ class Trips extends Component {
       this.props.setState({
         [name]: value
       })
-    } 
+    }
   }
 
   handleFormSubmit = user => {
+
 
     console.log(user)
     console.log("clicked")
@@ -125,9 +130,9 @@ class Trips extends Component {
     this.searchTrip(this.props.state.start, this.props.state.end)
     this.saveTrip(data)
   }
-
-
+  
   render() {
+    console.log("startCoords from trip.js: ", this.props.state.startCoords);
     return (
 
       <div>
@@ -143,8 +148,15 @@ class Trips extends Component {
 
         />
         <br></br>
-        <Directions endCoords={this.props.state.endCoords}
-          startCoords={this.props.state.startCoords} />
+        <Directions
+          endCoords={this.props.state.endCoords}
+          startCoords={this.props.state.startCoords}
+          directions={this.props.state.directions}
+          setState={this.props.setState}
+          defaultZoom={this.props.state.defaultZoom}
+          center={this.props.state.center}
+          map={this.props.state.map}
+        />
 
         <TripSearchResults
           steps={this.props.state.steps}

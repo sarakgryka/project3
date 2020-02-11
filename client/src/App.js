@@ -33,7 +33,8 @@ function withAuth0(WrappedComponent) {
     //   sub: "auth0|5e2a630654617b0e7cb9cfe7"
     // }
     // let loading = false;
-    console.log(user);
+    
+    console.log(user, Date.now());
     return <WrappedComponent loading={loading} user={user} {...props} />;
   }
 }
@@ -49,26 +50,16 @@ class App extends Component {
     placesOfInterest: [],
     lodging: [],
     restaurants: [],
-    trips: []
+    trips: [],
+    defaultZoom: 4,
+    map: null,
+    center: {
+      lat: 30.266666,
+      lng: -97.733330
+    },
+    directions: null
   };
 
-  deleteTrip = id => {
-    API.deleteTrip(id)
-    .then((data) => {
-      console.log(data);
-      API.getAllTrips(this.props.user)
-      .then((res) => {
-        console.log("API getAllTrips Res: ",res.data);
-        this.setState({
-          trips: res.data
-        })
-      })
-    })
-  }
-
-  handleDelete = id => {
-    this.deleteTrip(id)
-  }
 
   render() {
     if (this.props.loading) {

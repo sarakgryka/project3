@@ -2,7 +2,7 @@ const db = require("../models");
 
 module.exports = {
   findAll: function(req, res) {
-    console.log(req.params.user)
+    console.log(req.params.user, Date.now());
     db.Trip
       .find({user: req.params.user})
       .then(dbModel => res.json(dbModel))

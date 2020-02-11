@@ -11,11 +11,11 @@ const NavBar = () => {
   return (
     <div className="container">
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <Link to="/#">
-      <a className="navbar-brand" href="#">
+    <Link className="navbar-brand" to="/#">
+    
 
         <img src={ require('./images/trippin2x.png') } height="60" alt="" id="logo" />
-      </a>
+      
       </Link>
 
       <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
