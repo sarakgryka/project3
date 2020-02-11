@@ -12,9 +12,9 @@ function FirstBlock() {
 
                             <div className="col-md-5 px-6">
                                 <div className="card-block px-3">
-                                    <h2 className="card-title"> H2 Intro Content</h2>
-                                    <p className="card-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
-                                    <p className="card-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <h2 className="card-title"> Road Trip With Ease</h2>
+                                    <p className="card-text">On our "Plan Your Trips" page, you are greeted with Google Maps and a simple form where all you need to enter is your start and end location. Then let Trippin' handle the rest! </p>
+                                    <p className="card-text">After submitting, you'll be presented with a Map from Google containing corresponding start and end markers and a route drawn between them. Underneath the map, Trippin' will provide you with step-by-step directions and information from your desination like local restaurants, places of interest, and nearby hotels!</p>
 
                                     <button href="#" className="btn btn-primary">Plan Your Trip</button>
 

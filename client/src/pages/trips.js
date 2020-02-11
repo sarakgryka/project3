@@ -22,8 +22,9 @@ class Trips extends Component {
   //   restaurants: []
   // };
 
+// This only needs to be called if an API call needs to be done when the page loads
   componentDidMount() {
-    this.searchTrip();
+    // this.searchTrip();
   }
   ///define what the API call is returning
   loadTrips = tripInfo => {
