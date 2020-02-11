@@ -1,12 +1,10 @@
-import React, { Component } from "react";
-import { useAuth0 } from "./react-auth0-spa";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/home";
-import MyAccount from "./pages/myAccount";
-import Trips from "./pages/trips";
-import history from "./utils/history";
-import API from './utils/API';
-
+import React, { Component } from 'react';
+import { useAuth0 } from './react-auth0-spa';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './pages/home';
+import MyAccount from './pages/myAccount';
+import Trips from './pages/trips';
+import history from './utils/history';
 
 // higher order component
 /*
@@ -33,17 +31,17 @@ function withAuth0(WrappedComponent) {
     //   sub: "auth0|5e2a630654617b0e7cb9cfe7"
     // }
     // let loading = false;
-    
+
     console.log(user, Date.now());
     return <WrappedComponent loading={loading} user={user} {...props} />;
-  }
+  };
 }
 
 class App extends Component {
   state = {
-    value: "",
-    start: "",
-    end: "",
+    value: '',
+    start: '',
+    end: '',
     steps: [],
     startCoords: {},
     endCoords: {},
@@ -55,30 +53,30 @@ class App extends Component {
     map: null,
     center: {
       lat: 30.266666,
-      lng: -97.733330
+      lng: -97.73333
     },
     directions: null
   };
 
+  //* Removed API and moved it to AccountDetails page so that it can reload after a delete.
 
   render() {
     if (this.props.loading) {
       return <div>Loading...</div>;
     }
 
-
     return (
       <Router history={history}>
         <div className="App">
           <Switch>
             <Route exact path="/" render={() => <Home state={this.state} />} />
-            <Route exact path="/myAccount" render={() => <MyAccount handleDelete={this.handleDelete} setState={this.setState.bind(this)} state={this.state} user={this.props.user} />} />
-            <Route exact path="/trips" render={() => <Trips setState={this.setState.bind(this)} state={this.state} />} />
+            <Route exact path="/myAccount" render={() => <MyAccount setState={this.setState.bind(this)} state={this.state} user={this.props.user} />} />
+            <Route exact path="/trips" component={Trips} />
             <Route exact path="/alltrips" />
           </Switch>
         </div>
       </Router>
-    )
+    );
   }
 }
 
@@ -86,7 +84,6 @@ class App extends Component {
 // function App() {
 //   const { loading, user } = useAuth0();
 //   console.log(user)
-
 
 //   return (
 
