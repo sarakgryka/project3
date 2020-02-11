@@ -121,11 +121,6 @@ class Trips extends Component {
         console.log(res.data);
         console.log(htmlDirections);
         this.loadMap(this.state.startCoords, this.state.endCoords, this.state.steps);
-      }).then(() => {
-        this.setState({
-          start: "",
-          end: ""
-        })
       })
       .catch(err => console.log(err));
   };
