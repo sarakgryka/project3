@@ -1,8 +1,10 @@
 import React from "react";
 import "../style.css";
+import { useAuth0 } from "../../react-auth0-spa";
 import { Link } from "react-router-dom";
 
 function Footer() {
+    const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
     return (
 
         <div class="footerStyle">
@@ -27,18 +29,17 @@ function Footer() {
                         </li>
                     </Link>
 
-                    <Link to="/trips">
-                        <li className="nav-item footerLinks">
-                            Plan Your Trip
-                        {/* <a className="nav-link footer-link" href="#">Plan Your Trip</a> */}
-                        </li>
-                    </Link>
-                    <Link to="/myAccount">
-                        <li className="nav-item footerLinks">
-                            Account
-                        {/* <a className="nav-link footer-link" href="#">Account</a> */}
-                        </li>
-                    </Link>
+                    {isAuthenticated && <><Link to="/trips">
+            <li className="nav-item">
+              Plan Your Trip
+            </li>
+          </Link>
+
+          <Link to="/myAccount">
+            <li className="nav-item">
+              Account
+            </li>
+          </Link></>}
                 </ul>
 
             </footer>

@@ -10,7 +10,7 @@ function WideJumbo() {
                     
                     <h2>ABOUT TRIPPIN'</h2>
                     <div className="container col-sm-4 text-center">
-                    <p className="lead">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p className="lead">Trippin' was made with the idea that road-trippers should be able to maintain their spontaneity and spend less time rigidly planning their trip. So you choose the destination and let Trippin' do the rest!</p>
                     </div>
                 </div>
             </div>

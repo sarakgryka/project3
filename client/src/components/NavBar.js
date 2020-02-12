@@ -13,7 +13,6 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
     <Link className="navbar-brand" to="/#">
     
-
         <img src={ require('./images/trippin2x.png') } height="60" alt="" id="logo" />
       
       </Link>
@@ -34,21 +33,7 @@ const NavBar = () => {
           </Link></>}
 
 
-          {/* <Link to="/trips">
-            <li className="nav-item">
-              Plan Your Trip
-            <a className="nav-link active" href="#">Plan Your Trip</a>
-            </li>
-          </Link>
-
-          
-
-          <Link to="/myAccount">
-            <li className="nav-item">
-              Account
-            <a className="nav-link" href="#">Account</a>
-            </li>
-          </Link> */}
+        
         </ul>
       </div>
 

@@ -14,9 +14,7 @@ function SecondBlock() {
                         <div className="col-md-5 px-6">
                             <div className="card-block px-3">
                                 <h2 className="card-title">Create Your Account</h2>
-                                <p className="card-text">Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                  consequat. </p>
+                                <p className="card-text">Before using Trippin', please log in or create an account. Then you'll have access to all the functionality that Trippin' has to ofer. </p>
 
 
 
@@ -27,9 +25,9 @@ function SecondBlock() {
                        
                         
                         <div className="col-md-4">
-                            {!isAuthenticated && (
+                            
                                 <button className="btn btn-primary create-account-btn" onClick={() => loginWithRedirect({})}>CREATE ACCOUNT</button>
-                            )}
+                            
                         </div>
 
                     </div>

@@ -9,9 +9,9 @@ import SecondBlock from "../components/secondBlock";
 import Footer from "../components/footer";
 
 class Home extends Component {
-  state = {
+  // state = {
  
-  };
+  // };
 
   componentDidMount() {
    
