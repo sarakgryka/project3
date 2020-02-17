@@ -78,7 +78,6 @@ function AccountDetails(props) {
                     <DeleteBtn _id={trip._id} handleDelete={handleDelete} />
                     <br></br>
                     <br></br>
-                    <br></br>
                   </div>
                 ))
               : null}
