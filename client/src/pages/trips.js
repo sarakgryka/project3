@@ -102,7 +102,7 @@ class Trips extends Component {
           console.log("POI", placesRes.data.results.filter(result => result.types.indexOf('lodging') === -1).map(result => result.name))
           this.setState({
             placesOfInterest: placesRes.data.results.filter(result => result.types.indexOf('lodging') === -1).map(result => result.name),
-            lodging: placesRes.data.results.filter(result => result.types.indexOf('lodging') > -1).map(result => result.name)
+            
           });
           API.restaurants(endLat, endLon).then(foodRes => {
             console.log(foodRes);
@@ -114,6 +114,20 @@ class Trips extends Component {
             this.setState({
               restaurants: foodRes.data.results.filter(result => result.types.indexOf('lodging') === -1).map(restaurant => restaurant.name)
             });
+
+
+            API.lodging(endLat, endLon).then(lodgingRes => {
+              console.log(lodgingRes);
+              console.log(
+                'hotels: ',
+                lodgingRes.data.results.map(hotel => hotel.name)
+              );
+  
+              this.setState({
+                lodging: lodgingRes.data.results.map(hotel => hotel.name)
+              });
+
+
           });
         });
         console.log('start_location from trips.js: ', res.data.routes[0].legs[0].start_location);
@@ -123,7 +137,7 @@ class Trips extends Component {
         this.loadMap(this.state.startCoords, this.state.endCoords, this.state.steps);
       })
       .catch(err => console.log(err));
-  };
+  })}
 
   handleInput = event => {
     const name = event.target.name;
@@ -166,9 +180,9 @@ class Trips extends Component {
         <TripSearchResults steps={this.state.steps} placesOfInterest={this.state.placesOfInterest} lodging={this.state.lodging} restaurants={this.state.restaurants} saveTrip={this.saveTrip} />
         <Footer />
       </div>
-    );
+    )
   }
-}
+  }
 
 // function Trips() {
 //   return (

@@ -9,7 +9,13 @@ export default {
 
   // get places of interest from googlemaps
   places: function(endLat, endLon) {
-    return axios.get(`${solveCorsError}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${endLat},${endLon}&radius=30000&type=point_of_interest&key=${mapsKey}`);
+    return axios.get(`${solveCorsError}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${endLat},${endLon}&radius=30000&type=tourist_attraction&key=${mapsKey}`);
+    // point_of_interest|natural_feature|museum|amusement_park|
+  },
+
+  lodging: function(endLat, endLon) {
+    return axios.get(`${solveCorsError}https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${endLat},${endLon}&radius=30000&type=lodging&key=${mapsKey}`);
+    // point_of_interest|natural_feature|museum|amusement_park|
   },
 
   // get restaurants from googlemaps

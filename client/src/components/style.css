@@ -199,6 +199,7 @@ select:-webkit-autofill:focus {
   width: 1200px;
   background-color: #f6f6f6;
   overflow: auto;
+  max-width: 100%;
 }
 
 .card{

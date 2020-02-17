@@ -13,7 +13,7 @@ function TripSearchResults(props) {
                         <div className="col-sm-12">
                             <button onClick={() => props.saveTrip(user.nickname)} type="button" class="btn btn-primary hvr-sweep-to-right" id="saveButton">
                                 Save
-            <i class="fas fa-floppy"></i>
+                                <i class="fas fa-floppy"></i>
                             </button>
                         </div>
                     </div>
