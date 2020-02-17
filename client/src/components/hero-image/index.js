@@ -5,7 +5,7 @@ function HeroImage() {
     return (
         <div>
 
-            <div className="jumbotron jumbotron-fluid">
+            <div className="jumbotron img-fluid jumbotron-fluid">
                 <div className="container">
                     <h1 className="display-4">Welcome To Trippin'</h1>
                     <p className="lead">Where all of your roadtrip information is a simple search away</p>

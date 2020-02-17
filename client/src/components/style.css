@@ -8,8 +8,15 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 500px;
+    /* height: auto; */
+    /* height: 100% !important;  */
     background-attachment: fixed;
     overflow-x: hidden;
+    max-width: 100% !important;
+  }
+
+  #saveButton {
+    margin-bottom: 10% !important;
   }
 
   #plantriphero {
@@ -19,6 +26,10 @@
   .full-width{
       background-image: url("./images/full-width.png");
       height: 330px;
+  }
+
+  #planYourTrip {
+    max-width: 100%;
   }
 
   /* #plantriphero{
@@ -143,6 +154,11 @@ select:-webkit-autofill:focus {
 .fa-search{
    
     margin-left: 10px;
+}
+
+#saveButton {
+  margin-bottom: 3% !important;
+  margin-top: -3% !important;
 }
 
 .map{

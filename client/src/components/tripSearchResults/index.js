@@ -11,7 +11,7 @@ function TripSearchResults(props) {
                 <div className="container listSearchResults">
                     <div className="row">
                         <div className="col-sm-12">
-                            <button onClick={() => props.saveTrip(user.nickname)} type="button" class="btn btn-primary hvr-sweep-to-right" id="searchButton">
+                            <button onClick={() => props.saveTrip(user.nickname)} type="button" class="btn btn-primary hvr-sweep-to-right" id="saveButton">
                                 Save
             <i class="fas fa-floppy"></i>
                             </button>
