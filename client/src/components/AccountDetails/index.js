@@ -76,6 +76,7 @@ function AccountDetails(props) {
                     <h5>End Location: {trip.end}</h5>
                     <Link to={{ pathname: '/trips', trip: { tripId: trip._id, user: user.nickname } }}>View Trip    </Link>
                     <DeleteBtn _id={trip._id} handleDelete={handleDelete} />
+                    <br></br>
                   </div>
                 ))
               : null}
