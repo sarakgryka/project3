@@ -26,7 +26,7 @@ function SecondBlock() {
                         
                         <div className="col-md-4">
                             
-                                <button className="btn btn-primary create-account-btn" onClick={() => loginWithRedirect({})}>CREATE ACCOUNT</button>
+                            <button className="btn btn-primary create-account-btn" onClick={() => loginWithRedirect({})}>CREATE ACCOUNT</button>
                             
                         </div>
 

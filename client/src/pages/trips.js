@@ -38,7 +38,7 @@ class Trips extends Component {
       console.log(this.props);
       const getTripInfo = async id => {
         await API.getTrip(id).then(trip => {
-          console.log(trip.data);
+          console.log(trip.data); 
           // this guarantees that the "handleFormSubmit function" will not be run until state has been set
           this.setState({ start: trip.data.start, end: trip.data.end }, () => this.handleFormSubmit(this.props.location.trip.user));
         });
